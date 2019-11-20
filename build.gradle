@@ -22,7 +22,7 @@ subprojects { Project subproject ->
             jcenter()
         }
         dependencies {
-            classpath 'com.android.tools.build:gradle:3.3.0'
+            classpath 'com.android.tools.build:gradle:3.5.2'
         }
     }
 
@@ -31,8 +31,3 @@ subprojects { Project subproject ->
         jcenter()
     }
 }
-
-task wrapper(type: Wrapper) {
-    gradleVersion = '4.10.2'
-}
-
