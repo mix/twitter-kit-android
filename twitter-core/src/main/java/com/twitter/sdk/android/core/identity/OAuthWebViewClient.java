@@ -17,6 +17,7 @@
 
 package com.twitter.sdk.android.core.identity;
 
+import android.graphics.Bitmap;
 import android.net.http.SslError;
 import android.os.Bundle;
 import android.webkit.SslErrorHandler;
@@ -45,6 +46,15 @@ class OAuthWebViewClient extends WebViewClient {
     OAuthWebViewClient(String completeUrl, Listener listener) {
         this.completeUrl = completeUrl;
         this.listener = listener;
+    }
+
+    @Override
+    public void onPageStarted(WebView view, String url, Bitmap favicon) {
+        super.onPageStarted(view, url, favicon);
+
+        if (url.equals("https://mix.com/")) {
+            listener.onError(new WebViewException(-1, "OAuth Error", ""));
+        }
     }
 
     @Override
